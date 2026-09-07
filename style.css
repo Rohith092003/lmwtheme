@@ -1,0 +1,240 @@
+/*
+Theme Name: LMW Fashion
+Theme URI: https://lmwfashion.com
+Author: LMW Development Team
+Author URI: https://lmwfashion.com
+Description: A modern, premium, mobile-first WooCommerce theme for LMW Fashion — a clothing brand focused on shirts. Standalone theme with no parent dependency.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 8.0
+License: Proprietary
+License URI: https://lmwfashion.com/license
+Text Domain: lmw-theme
+Tags: e-commerce, woocommerce, fashion, clothing, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+LMW Fashion Theme — All rights reserved.
+*/
+
+/* ─── CSS Reset & Base ───────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Brand Colors */
+    --lmw-primary: #1a1a2e;
+    --lmw-primary-light: #16213e;
+    --lmw-accent: #e94560;
+    --lmw-accent-hover: #d63851;
+    --lmw-gold: #c9a96e;
+    --lmw-gold-light: #d4b97a;
+
+    /* Neutrals */
+    --lmw-white: #ffffff;
+    --lmw-off-white: #f8f9fa;
+    --lmw-light-grey: #e9ecef;
+    --lmw-mid-grey: #6c757d;
+    --lmw-dark-grey: #343a40;
+    --lmw-black: #212529;
+
+    /* Typography */
+    --lmw-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --lmw-font-heading: 'Playfair Display', Georgia, serif;
+
+    /* Spacing */
+    --lmw-container-width: 1280px;
+    --lmw-container-padding: 1.5rem;
+    --lmw-section-gap: 4rem;
+
+    /* Transitions */
+    --lmw-transition: 0.3s ease;
+    --lmw-transition-fast: 0.15s ease;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--lmw-font-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--lmw-black);
+    background-color: var(--lmw-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--lmw-transition);
+}
+
+a:hover {
+    color: var(--lmw-accent);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--lmw-font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--lmw-primary);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+
+.lmw-container {
+    width: 100%;
+    max-width: var(--lmw-container-width);
+    margin: 0 auto;
+    padding: 0 var(--lmw-container-padding);
+}
+
+.lmw-section {
+    padding: var(--lmw-section-gap) 0;
+}
+
+/* ─── Buttons ────────────────────────────────────────── */
+
+.lmw-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all var(--lmw-transition);
+}
+
+.lmw-btn--primary {
+    background-color: var(--lmw-primary);
+    color: var(--lmw-white);
+}
+
+.lmw-btn--primary:hover {
+    background-color: var(--lmw-accent);
+    color: var(--lmw-white);
+}
+
+.lmw-btn--accent {
+    background-color: var(--lmw-accent);
+    color: var(--lmw-white);
+}
+
+.lmw-btn--accent:hover {
+    background-color: var(--lmw-accent-hover);
+    color: var(--lmw-white);
+}
+
+.lmw-btn--outline {
+    background-color: transparent;
+    color: var(--lmw-primary);
+    border: 2px solid var(--lmw-primary);
+}
+
+.lmw-btn--outline:hover {
+    background-color: var(--lmw-primary);
+    color: var(--lmw-white);
+}
+
+/* ─── Screen Reader Text ─────────────────────────────── */
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* ─── Accessibility ──────────────────────────────────── */
+
+:focus-visible {
+    outline: 2px solid var(--lmw-accent);
+    outline-offset: 2px;
+}
+
+/* ─── WordPress Core Classes ─────────────────────────── */
+
+.alignleft {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.alignright {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    font-size: 0.875rem;
+    color: var(--lmw-mid-grey);
+    margin-top: 0.5rem;
+}
