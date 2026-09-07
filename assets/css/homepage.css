@@ -1,0 +1,554 @@
+/* ─── LMW Fashion — Homepage Styles ──────────────────── */
+
+/* ─── Section Headers (reusable) ─────────────────────── */
+
+.lmw-section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.lmw-section__label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--lmw-accent);
+    margin-bottom: 0.75rem;
+}
+
+.lmw-section__title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--lmw-primary);
+}
+
+.lmw-section__footer {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+/* ─── Hero Banner ────────────────────────────────────── */
+
+.lmw-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--lmw-primary) 0%, var(--lmw-primary-light) 100%);
+    overflow: hidden;
+}
+
+.lmw-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(233, 69, 96, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 80%, rgba(201, 169, 110, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.lmw-hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 0;
+}
+
+.lmw-hero__label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lmw-gold);
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.lmw-hero__title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--lmw-white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+}
+
+.lmw-hero__title--accent {
+    color: var(--lmw-accent);
+    font-style: italic;
+}
+
+.lmw-hero__subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.lmw-hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.lmw-btn--outline-white {
+    color: var(--lmw-white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lmw-btn--outline-white:hover {
+    background-color: var(--lmw-white);
+    color: var(--lmw-primary);
+    border-color: var(--lmw-white);
+}
+
+/* ─── Categories Grid ────────────────────────────────── */
+
+.lmw-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.lmw-categories__card {
+    position: relative;
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform var(--lmw-transition), box-shadow var(--lmw-transition);
+}
+
+.lmw-categories__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    color: inherit;
+}
+
+.lmw-categories__image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+}
+
+.lmw-categories__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.lmw-categories__card:hover .lmw-categories__image img {
+    transform: scale(1.05);
+}
+
+.lmw-categories__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lmw-light-grey);
+    color: var(--lmw-mid-grey);
+}
+
+.lmw-categories__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    color: var(--lmw-white);
+}
+
+.lmw-categories__name {
+    font-family: var(--lmw-font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--lmw-white);
+}
+
+.lmw-categories__count {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ─── Product Grid (homepage sections) ───────────────── */
+
+.lmw-products-section--alt {
+    background-color: var(--lmw-off-white);
+}
+
+.lmw-products-grid {
+    /* WooCommerce shortcode outputs <ul class="products"> */
+}
+
+.lmw-products-grid .products {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lmw-products-grid .products li.product {
+    margin: 0 !important;
+    padding: 0;
+    text-align: left;
+}
+
+.lmw-products-grid .products li.product a.woocommerce-LoopProduct-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.lmw-products-grid .products li.product .attachment-woocommerce_thumbnail {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+}
+
+.lmw-products-grid .products li.product:hover .attachment-woocommerce_thumbnail {
+    transform: scale(1.03);
+}
+
+.lmw-products-grid .products li.product .woocommerce-loop-product__title {
+    font-family: var(--lmw-font-primary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--lmw-dark-grey);
+    margin: 0.75rem 0 0.25rem;
+    padding: 0;
+}
+
+.lmw-products-grid .products li.product .price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--lmw-primary);
+}
+
+.lmw-products-grid .products li.product .price del {
+    color: var(--lmw-mid-grey);
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+.lmw-products-grid .products li.product .price ins {
+    text-decoration: none;
+    color: var(--lmw-accent);
+}
+
+.lmw-products-grid .products li.product .button {
+    display: none; /* Hide add-to-cart on homepage grids */
+}
+
+.lmw-products-grid .products li.product .onsale {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--lmw-accent);
+    color: var(--lmw-white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 3px;
+    z-index: 5;
+}
+
+/* ─── Offers Banner ──────────────────────────────────── */
+
+.lmw-offers-banner {
+    background: linear-gradient(135deg, var(--lmw-primary) 0%, #0a3d62 100%);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.lmw-offers-banner__content {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.lmw-offers-banner__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lmw-gold);
+    margin-bottom: 1rem;
+}
+
+.lmw-offers-banner__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--lmw-white);
+    margin-bottom: 1rem;
+}
+
+.lmw-offers-banner__text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* ─── Testimonials ───────────────────────────────────── */
+
+.lmw-testimonials {
+    background-color: var(--lmw-off-white);
+}
+
+.lmw-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.lmw-testimonials__card {
+    background-color: var(--lmw-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow var(--lmw-transition), transform var(--lmw-transition);
+}
+
+.lmw-testimonials__card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.lmw-testimonials__stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 1rem;
+}
+
+.lmw-testimonials__text {
+    font-size: 0.9375rem;
+    color: var(--lmw-dark-grey);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.lmw-testimonials__author {
+    display: flex;
+    flex-direction: column;
+}
+
+.lmw-testimonials__name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--lmw-primary);
+}
+
+.lmw-testimonials__city {
+    font-size: 0.8125rem;
+    color: var(--lmw-mid-grey);
+}
+
+/* ─── Features / Why Choose Us ───────────────────────── */
+
+.lmw-features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.lmw-features__card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    background-color: var(--lmw-white);
+    border: 1px solid var(--lmw-light-grey);
+    transition: box-shadow var(--lmw-transition), transform var(--lmw-transition);
+}
+
+.lmw-features__card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+}
+
+.lmw-features__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background-color: rgba(233, 69, 96, 0.08);
+    color: var(--lmw-accent);
+}
+
+.lmw-features__title {
+    font-family: var(--lmw-font-primary);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--lmw-primary);
+    margin-bottom: 0.75rem;
+}
+
+.lmw-features__desc {
+    font-size: 0.875rem;
+    color: var(--lmw-mid-grey);
+    line-height: 1.6;
+}
+
+/* ─── Newsletter ─────────────────────────────────────── */
+
+.lmw-newsletter {
+    background: linear-gradient(135deg, var(--lmw-primary) 0%, var(--lmw-primary-light) 100%);
+}
+
+.lmw-newsletter__inner {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.lmw-newsletter__title {
+    font-size: 2rem;
+    color: var(--lmw-white);
+    margin-bottom: 0.75rem;
+}
+
+.lmw-newsletter__text {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.lmw-newsletter__form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.lmw-newsletter__input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 0.9375rem;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--lmw-white);
+    outline: none;
+}
+
+.lmw-newsletter__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.lmw-newsletter__input:focus {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.lmw-newsletter__btn {
+    border-radius: 0 4px 4px 0;
+    padding: 0.875rem 1.5rem;
+    white-space: nowrap;
+}
+
+.lmw-newsletter__disclaimer {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 1rem;
+}
+
+/* ─── Responsive — Homepage ──────────────────────────── */
+
+@media (max-width: 1024px) {
+    .lmw-hero__title {
+        font-size: 3rem;
+    }
+
+    .lmw-categories__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lmw-products-grid .products {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .lmw-features__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lmw-hero {
+        min-height: 70vh;
+    }
+
+    .lmw-hero__title {
+        font-size: 2.25rem;
+    }
+
+    .lmw-hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .lmw-hero__actions {
+        flex-direction: column;
+    }
+
+    .lmw-section__title {
+        font-size: 1.75rem;
+    }
+
+    .lmw-categories__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .lmw-products-grid .products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .lmw-testimonials__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lmw-features__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .lmw-offers-banner__title {
+        font-size: 1.75rem;
+    }
+
+    .lmw-newsletter__form {
+        flex-direction: column;
+    }
+
+    .lmw-newsletter__input {
+        border-radius: 4px;
+    }
+
+    .lmw-newsletter__btn {
+        border-radius: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lmw-hero__title {
+        font-size: 1.75rem;
+    }
+
+    .lmw-categories__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lmw-features__grid {
+        grid-template-columns: 1fr;
+    }
+}

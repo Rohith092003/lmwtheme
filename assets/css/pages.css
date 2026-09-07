@@ -1,0 +1,152 @@
+/* ─── LMW Fashion — Static Page Styles ───────────────── */
+
+/* ─── Page Banner (top banner for About/Contact/Policy pages) ── */
+
+.lmw-page-banner {
+    background-color: var(--lmw-primary);
+    padding: 3.5rem 0;
+    text-align: center;
+}
+
+.lmw-page-banner__title {
+    font-size: 2.5rem;
+    color: var(--lmw-white);
+    font-weight: 600;
+}
+
+/* ─── About Page ─────────────────────────────────────── */
+
+.lmw-about-story__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.lmw-about-story__content p {
+    color: var(--lmw-dark-grey);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.lmw-about-story__placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lmw-light-grey);
+    border-radius: 12px;
+    color: var(--lmw-mid-grey);
+}
+
+.lmw-about-values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.lmw-about-values__card {
+    background-color: var(--lmw-white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.lmw-about-values__card h3 {
+    font-family: var(--lmw-font-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.lmw-about-values__card p {
+    font-size: 0.9375rem;
+    color: var(--lmw-mid-grey);
+    line-height: 1.6;
+}
+
+/* ─── Contact Page ───────────────────────────────────── */
+
+.lmw-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+}
+
+.lmw-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.lmw-contact__detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--lmw-dark-grey);
+}
+
+.lmw-contact__detail svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--lmw-accent);
+}
+
+.lmw-contact__form-inner {
+    background-color: var(--lmw-off-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+}
+
+.lmw-contact-form .lmw-form-row {
+    margin-bottom: 1.25rem;
+}
+
+.lmw-contact-form label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    color: var(--lmw-dark-grey);
+}
+
+.lmw-contact-form input,
+.lmw-contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--lmw-light-grey);
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    transition: border-color var(--lmw-transition);
+}
+
+.lmw-contact-form input:focus,
+.lmw-contact-form textarea:focus {
+    border-color: var(--lmw-primary);
+    outline: none;
+}
+
+/* ─── Responsive — Pages ─────────────────────────────── */
+
+@media (max-width: 768px) {
+    .lmw-page-banner__title {
+        font-size: 1.75rem;
+    }
+
+    .lmw-about-story__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .lmw-about-values__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lmw-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

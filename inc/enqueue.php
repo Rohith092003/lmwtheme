@@ -37,6 +37,26 @@ function lmw_theme_enqueue_assets() {
         LMW_THEME_VERSION
     );
 
+    // Homepage CSS (only on front page)
+    if ( is_front_page() ) {
+        wp_enqueue_style(
+            'lmw-homepage-css',
+            LMW_THEME_URI . '/assets/css/homepage.css',
+            array( 'lmw-theme-style' ),
+            LMW_THEME_VERSION
+        );
+    }
+
+    // Static pages CSS (about, contact, policies)
+    if ( is_page() && ! is_front_page() ) {
+        wp_enqueue_style(
+            'lmw-pages-css',
+            LMW_THEME_URI . '/assets/css/pages.css',
+            array( 'lmw-theme-style' ),
+            LMW_THEME_VERSION
+        );
+    }
+
     // Main JS
     wp_enqueue_script(
         'lmw-main-js',
