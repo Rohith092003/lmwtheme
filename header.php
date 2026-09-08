@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 'menu_id'        => 'primary-menu',
                 'menu_class'     => 'lmw-nav-menu',
                 'container'      => false,
-                'fallback_cb'    => false,
+                'fallback_cb'    => 'lmw_theme_default_primary_menu',
             ) );
             ?>
         </nav>

@@ -101,3 +101,30 @@ function lmw_theme_body_classes( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'lmw_theme_body_classes' );
+
+/**
+ * Default primary navigation fallback when no WordPress menu is assigned.
+ */
+function lmw_theme_default_primary_menu() {
+    $shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
+    echo '<ul id="primary-menu" class="lmw-nav-menu">';
+    echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( $shop_url ) . '">' . esc_html__( 'Shop All', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/product-category/formal-shirts/' ) ) . '">' . esc_html__( 'Formal Shirts', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/product-category/casual-shirts/' ) ) . '">' . esc_html__( 'Casual Shirts', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/order-tracking/' ) ) . '">' . esc_html__( 'Track Order', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">' . esc_html__( 'Contact', 'lmw-theme' ) . '</a></li>';
+    echo '</ul>';
+}
+
+/**
+ * Default footer navigation fallback when no WordPress menu is assigned.
+ */
+function lmw_theme_default_footer_menu() {
+    echo '<ul class="lmw-footer__menu">';
+    echo '<li><a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '">' . esc_html__( 'Privacy Policy', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/terms-conditions/' ) ) . '">' . esc_html__( 'Terms of Service', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/refund_returns/' ) ) . '">' . esc_html__( 'Shipping & Returns', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">' . esc_html__( 'Contact', 'lmw-theme' ) . '</a></li>';
+    echo '</ul>';
+}

@@ -42,13 +42,19 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 
         <div class="lmw-footer__bottom">
-            <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'lmw-theme' ); ?></p>
+            <?php
+            $footer_site_name = get_bloginfo( 'name' );
+            if ( empty( $footer_site_name ) || false !== strpos( $footer_site_name, 'hostingersite.com' ) ) {
+                $footer_site_name = 'LMW Fashion';
+            }
+            ?>
+            <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( $footer_site_name ); ?>. <?php esc_html_e( 'All rights reserved.', 'lmw-theme' ); ?></p>
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'footer',
                 'menu_class'     => 'lmw-footer__menu',
                 'container'      => false,
-                'fallback_cb'    => false,
+                'fallback_cb'    => 'lmw_theme_default_footer_menu',
                 'depth'          => 1,
             ) );
             ?>
