@@ -12,7 +12,7 @@ get_header();
 
     <section class="lmw-page-banner">
         <div class="lmw-container">
-            <h1 class="lmw-page-banner__title"><?php echo ( get_the_title() && 'Page not found' !== get_the_title() ) ? esc_html( get_the_title() ) : esc_html__( 'Contact Client Services', 'lmw-theme' ); ?></h1>
+            <h1 class="lmw-page-banner__title"><?php esc_html_e( 'Contact Client Services', 'lmw-theme' ); ?></h1>
         </div>
     </section>
 
@@ -72,7 +72,7 @@ get_header();
                         endwhile;
                         ?>
 
-                        <?php if ( ! has_blocks() && ! has_shortcode( get_the_content(), 'contact-form-7' ) ) : ?>
+                        <?php if ( empty( get_the_content() ) || ( ! has_blocks() && ! has_shortcode( get_the_content(), 'contact-form-7' ) ) ) : ?>
                             <form class="lmw-contact-form" method="post">
                                 <div class="lmw-form-row">
                                     <label for="lmw-name"><?php esc_html_e( 'Full Name', 'lmw-theme' ); ?></label>

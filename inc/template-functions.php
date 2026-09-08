@@ -132,23 +132,63 @@ function lmw_theme_default_footer_menu() {
 /**
  * Virtual router to serve page-contact.php on /contact/ and redirect policy subpaths.
  */
+function lmw_theme_virtual_contact_check() {
+    global $wp;
+    $req = isset( $wp->request ) ? trim( $wp->request, '/' ) : '';
+    $uri_path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+
+    return ( 'contact' === $req || 'contact' === $uri_path || 'contact-us' === $req || 'contact-us' === $uri_path );
+}
+
+function lmw_theme_virtual_redirect_handler() {
+    global $wp, $wp_query;
+    $req = isset( $wp->request ) ? trim( $wp->request, '/' ) : '';
+    $uri_path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+
+    if ( lmw_theme_virtual_contact_check() ) {
+        if ( isset( $wp_query ) ) {
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
+        }
+        status_header( 200 );
+        return;
+    }
+
+    if ( in_array( $req, array( 'privacy-policy', 'terms-conditions', 'refund_returns', 'refund-returns', 'shipping-returns' ), true ) ||
+         in_array( $uri_path, array( 'privacy-policy', 'terms-conditions', 'refund_returns', 'refund-returns', 'shipping-returns' ), true ) ) {
+        wp_safe_redirect( home_url( '/policies/' ), 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'lmw_theme_virtual_redirect_handler', 1 );
+
 function lmw_theme_virtual_page_router( $template ) {
-    if ( is_404() ) {
-        $path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
-        
-        if ( 'contact' === $path || 'contact-us' === $path ) {
-            status_header( 200 );
-            $contact_file = LMW_THEME_DIR . '/page-contact.php';
-            if ( file_exists( $contact_file ) ) {
-                return $contact_file;
-            }
+    if ( lmw_theme_virtual_contact_check() ) {
+        global $wp_query;
+        if ( isset( $wp_query ) ) {
+            $wp_query->is_404 = false;
+            $wp_query->is_page = true;
         }
-        
-        if ( in_array( $path, array( 'privacy-policy', 'terms-conditions', 'refund_returns', 'refund-returns', 'shipping-returns' ), true ) ) {
-            wp_safe_redirect( home_url( '/policies/' ), 301 );
-            exit;
+        status_header( 200 );
+        $contact_file = locate_template( array( 'page-contact.php' ) );
+        if ( $contact_file ) {
+            return $contact_file;
         }
+        return get_template_directory() . '/page-contact.php';
     }
     return $template;
 }
 add_filter( 'template_include', 'lmw_theme_virtual_page_router', 99 );
+add_filter( '404_template', 'lmw_theme_virtual_page_router', 99 );
+
+function lmw_theme_virtual_contact_title( $title ) {
+    if ( lmw_theme_virtual_contact_check() ) {
+        $site_name = get_bloginfo( 'name' );
+        if ( empty( $site_name ) || false !== strpos( $site_name, 'hostingersite.com' ) ) {
+            $site_name = 'LMW Fashion';
+        }
+        return 'Contact Client Services – ' . $site_name;
+    }
+    return $title;
+}
+add_filter( 'pre_get_document_title', 'lmw_theme_virtual_contact_title', 99 );
