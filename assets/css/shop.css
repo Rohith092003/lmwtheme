@@ -1367,17 +1367,49 @@ ul.products li.product {
 
 /* ─── Standard WooCommerce Login & Register Grid (#customer_login) ─── */
 
+.woocommerce-account .lmw-main {
+    background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+    min-height: 70vh;
+}
+
 .woocommerce-account .lmw-page__header {
     text-align: center;
-    margin-bottom: 1.5rem;
-    padding-top: 1rem;
+    margin-bottom: 2rem;
+    padding-top: 1.5rem;
+}
+
+.woocommerce-account .lmw-page__header::before {
+    content: 'AUTHENTICATION & MEMBERSHIP';
+    display: inline-block;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lmw-accent, #0B86E9);
+    background: #F0F7FF;
+    border: 1px solid rgba(11, 134, 233, 0.22);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
 }
 
 .woocommerce-account .lmw-page__title {
     font-family: var(--lmw-font-heading, 'Playfair Display', serif);
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     color: var(--lmw-primary, #011F4C);
     font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.woocommerce-account .lmw-page__header::after {
+    content: 'Sign in to access your wardrobe & orders, or register to join the LMW Sartorial Club.';
+    display: block;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.95rem;
+    color: var(--lmw-mid-grey, #64748B);
+    margin-top: 0.5rem;
 }
 
 .woocommerce-account:has(.lmw-auth-wrapper) .lmw-page__header {
@@ -1391,9 +1423,10 @@ ul.products li.product {
     grid-template-columns: 1fr 1fr !important;
     gap: 2.5rem !important;
     max-width: 1080px !important;
-    margin: 1rem auto 4.5rem auto !important;
+    margin: 1rem auto 2.5rem auto !important;
     float: none !important;
     box-sizing: border-box !important;
+    align-items: stretch !important;
 }
 
 #customer_login .u-column1,
@@ -1404,9 +1437,9 @@ ul.products li.product {
     width: 100% !important;
     background: #ffffff !important;
     border: 1px solid #E2E8F0 !important;
-    border-radius: 18px !important;
-    padding: 2.75rem 2.5rem !important;
-    box-shadow: 0 12px 36px rgba(1, 31, 76, 0.05), 0 2px 6px rgba(1, 31, 76, 0.02) !important;
+    border-radius: 20px !important;
+    padding: 3rem 2.5rem !important;
+    box-shadow: 0 16px 40px rgba(1, 31, 76, 0.05), 0 2px 6px rgba(1, 31, 76, 0.02) !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1417,13 +1450,13 @@ ul.products li.product {
 #customer_login .u-column2:hover,
 #customer_login .col-1:hover,
 #customer_login .col-2:hover {
-    box-shadow: 0 18px 48px rgba(1, 31, 76, 0.09) !important;
+    box-shadow: 0 22px 52px rgba(1, 31, 76, 0.09) !important;
     border-color: #CBD5E1 !important;
 }
 
 #customer_login h2 {
     font-family: var(--lmw-font-heading, 'Playfair Display', Georgia, serif) !important;
-    font-size: 1.85rem !important;
+    font-size: 2rem !important;
     font-weight: 700 !important;
     color: var(--lmw-primary, #011F4C) !important;
     margin: 0 0 1.75rem 0 !important;
@@ -1431,6 +1464,31 @@ ul.products li.product {
     position: relative !important;
     letter-spacing: -0.01em !important;
     line-height: 1.25 !important;
+}
+
+#customer_login .col-1 h2::before {
+    content: 'EXISTING CLIENT';
+    display: block;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lmw-mid-grey, #64748B);
+    margin-bottom: 0.4rem;
+}
+
+#customer_login .col-2 h2::before,
+#customer_login .u-column2 h2::before {
+    content: 'MEMBERSHIP PRIVILEGES';
+    display: block;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--lmw-accent, #0B86E9);
+    margin-bottom: 0.4rem;
 }
 
 #customer_login h2::after {
@@ -1458,6 +1516,7 @@ ul.products li.product {
     flex: 1 !important;
     display: flex !important;
     flex-direction: column !important;
+    justify-content: space-between !important;
 }
 
 #customer_login .woocommerce-form-row,
@@ -1486,9 +1545,9 @@ ul.products li.product {
 #customer_login input.woocommerce-Input,
 #customer_login input.input-text {
     width: 100% !important;
-    height: 48px !important;
+    height: 50px !important;
     padding: 0 1.15rem !important;
-    border: 1.5px solid #CBD5E1 !important;
+    border: 1.5px solid #E2E8F0 !important;
     border-radius: 10px !important;
     font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
     font-size: 0.9375rem !important;
@@ -1504,18 +1563,76 @@ ul.products li.product {
     outline: none !important;
     border-color: var(--lmw-accent, #0B86E9) !important;
     background: #ffffff !important;
-    box-shadow: 0 0 0 3.5px rgba(11, 134, 233, 0.15) !important;
+    box-shadow: 0 0 0 4px rgba(11, 134, 233, 0.12) !important;
 }
 
+/* Password Input & Show/Hide Eye Toggle */
+#customer_login .password-input,
+.password-input {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+#customer_login .password-input input.woocommerce-Input,
+#customer_login .password-input input.input-text {
+    padding-right: 46px !important;
+}
+
+#customer_login .password-input .show-password-input,
+.password-input .show-password-input {
+    position: absolute !important;
+    top: 50% !important;
+    right: 12px !important;
+    transform: translateY(-50%) !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0.65 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+#customer_login .password-input .show-password-input:hover,
+.password-input .show-password-input:hover {
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1.08) !important;
+}
+
+#customer_login .password-input .show-password-input::after,
+.password-input .show-password-input::after {
+    content: '' !important;
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748B' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'/%3E%3C/svg%3E") !important;
+}
+
+#customer_login .password-input .show-password-input.display-password::after,
+.password-input .show-password-input.display-password::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230B86E9' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18'/%3E%3C/svg%3E") !important;
+}
+
+/* Remember Me Checkbox */
 #customer_login .woocommerce-form-login__rememberme {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 0.5rem !important;
+    gap: 0.6rem !important;
     font-weight: 500 !important;
     color: var(--lmw-mid-grey, #64748B) !important;
     font-size: 0.875rem !important;
     cursor: pointer !important;
-    margin-bottom: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+    user-select: none !important;
 }
 
 #customer_login .woocommerce-form-login__rememberme input[type="checkbox"],
@@ -1528,21 +1645,22 @@ ul.products li.product {
     margin: 0 !important;
 }
 
+/* Submit Buttons */
 #customer_login button.woocommerce-form-login__submit {
     width: 100% !important;
-    height: 50px !important;
+    height: 52px !important;
     background: var(--lmw-primary, #011F4C) !important;
     color: #ffffff !important;
     border: none !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
     font-size: 0.9375rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
     cursor: pointer !important;
     transition: all 0.25s ease !important;
-    box-shadow: 0 4px 14px rgba(1, 31, 76, 0.2) !important;
+    box-shadow: 0 6px 20px rgba(1, 31, 76, 0.22) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1550,34 +1668,34 @@ ul.products li.product {
 
 #customer_login button.woocommerce-form-login__submit:hover {
     background: var(--lmw-primary-dark, #021A46) !important;
-    box-shadow: 0 6px 20px rgba(1, 31, 76, 0.3) !important;
-    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 26px rgba(1, 31, 76, 0.35) !important;
+    transform: translateY(-2px) !important;
 }
 
 #customer_login button.woocommerce-form-register__submit {
     width: 100% !important;
-    height: 50px !important;
-    background: linear-gradient(135deg, #0B86E9, #096ec2) !important;
+    height: 52px !important;
+    background: linear-gradient(135deg, #0B86E9 0%, #096ec2 100%) !important;
     color: #ffffff !important;
     border: none !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
     font-size: 0.9375rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.06em !important;
     text-transform: uppercase !important;
     cursor: pointer !important;
     transition: all 0.25s ease !important;
-    box-shadow: 0 4px 14px rgba(11, 134, 233, 0.25) !important;
+    box-shadow: 0 6px 20px rgba(11, 134, 233, 0.3) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
 #customer_login button.woocommerce-form-register__submit:hover {
-    background: linear-gradient(135deg, #096ec2, #08599e) !important;
-    box-shadow: 0 6px 20px rgba(11, 134, 233, 0.35) !important;
-    transform: translateY(-1px) !important;
+    background: linear-gradient(135deg, #096ec2 0%, #08599e 100%) !important;
+    box-shadow: 0 8px 28px rgba(11, 134, 233, 0.45) !important;
+    transform: translateY(-2px) !important;
 }
 
 #customer_login .lost_password,
@@ -1604,19 +1722,77 @@ ul.products li.product {
 
 #customer_login .woocommerce-privacy-policy-text {
     font-size: 0.8125rem !important;
-    color: var(--lmw-mid-grey, #64748B) !important;
+    color: #1E3A8A !important;
     line-height: 1.55 !important;
-    margin: 1.25rem 0 !important;
-    padding: 0.85rem 1rem !important;
-    background: #F8FAFC !important;
-    border-radius: 8px !important;
-    border: 1px solid #E2E8F0 !important;
+    margin: 1.25rem 0 1.5rem 0 !important;
+    padding: 0.95rem 1.15rem !important;
+    background: #F0F7FF !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(11, 134, 233, 0.2) !important;
 }
 
 #customer_login .woocommerce-privacy-policy-text a {
     color: var(--lmw-accent, #0B86E9) !important;
     text-decoration: underline !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+}
+
+/* Luxury Trust Bar below Login & Register Cards */
+.lmw-auth-trust-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    max-width: 1080px;
+    margin: 0 auto 5rem auto;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    padding: 1.75rem 2.25rem;
+    box-shadow: 0 8px 28px rgba(1, 31, 76, 0.04);
+    box-sizing: border-box;
+}
+
+.lmw-auth-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lmw-auth-trust-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #F0F7FF;
+    border: 1px solid rgba(11, 134, 233, 0.2);
+    color: var(--lmw-accent, #0B86E9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.lmw-auth-trust-text strong {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--lmw-primary, #011F4C);
+    margin-bottom: 0.2rem;
+}
+
+.lmw-auth-trust-text span {
+    display: block;
+    font-size: 0.775rem;
+    color: var(--lmw-mid-grey, #64748B);
+    line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+    .lmw-auth-trust-bar {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 1.5rem;
+        margin-bottom: 3.5rem;
+    }
 }
 
 @media (max-width: 860px) {
@@ -1625,7 +1801,7 @@ ul.products li.product {
     .woocommerce-account #customer_login.col2-set {
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
-        margin-top: 1.25rem !important;
+        margin-top: 1rem !important;
     }
     #customer_login .u-column1,
     #customer_login .u-column2,

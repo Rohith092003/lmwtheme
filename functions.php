@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Theme Constants
  */
-define( 'LMW_THEME_VERSION', '1.1.0' );
+define( 'LMW_THEME_VERSION', '1.1.1' );
 define( 'LMW_THEME_DIR', get_template_directory() );
 define( 'LMW_THEME_URI', get_template_directory_uri() );
 

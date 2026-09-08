@@ -138,3 +138,41 @@ function lmw_theme_wc_locate_template( $template, $template_name, $template_path
     return $template;
 }
 add_filter( 'woocommerce_locate_template', 'lmw_theme_wc_locate_template', 999, 3 );
+
+/**
+ * Output luxury trust and member benefits bar on customer login page.
+ */
+function lmw_theme_auth_perks_bar() {
+    ?>
+    <div class="lmw-auth-trust-bar">
+        <div class="lmw-auth-trust-item">
+            <div class="lmw-auth-trust-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="lmw-auth-trust-text">
+                <strong>100% Encrypted & Private</strong>
+                <span>Bank-grade security protects your credentials and personal wardrobe data.</span>
+            </div>
+        </div>
+        <div class="lmw-auth-trust-item">
+            <div class="lmw-auth-trust-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div class="lmw-auth-trust-text">
+                <strong>Complimentary Express Delivery</strong>
+                <span>Club members receive priority expedited courier shipping on all orders.</span>
+            </div>
+        </div>
+        <div class="lmw-auth-trust-item">
+            <div class="lmw-auth-trust-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </div>
+            <div class="lmw-auth-trust-text">
+                <strong>7-Day Bespoke Exchanges</strong>
+                <span>Effortless size swaps and fit consultations handled by personal stylists.</span>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+add_action( 'woocommerce_after_customer_login_form', 'lmw_theme_auth_perks_bar', 20 );
