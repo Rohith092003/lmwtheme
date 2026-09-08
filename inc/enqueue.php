@@ -66,6 +66,25 @@ function lmw_theme_enqueue_assets() {
         true
     );
 
+    // Shop Faceted Filter JS (Flipkart/Myntra style filtering)
+    if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || is_product_category() ) ) {
+        wp_enqueue_script(
+            'lmw-shop-filter-js',
+            LMW_THEME_URI . '/assets/js/shop-filter.js',
+            array(),
+            LMW_THEME_VERSION,
+            true
+        );
+        wp_localize_script(
+            'lmw-shop-filter-js',
+            'lmw_filter_vars',
+            array(
+                'ajax_url' => admin_url( 'admin-ajax.php' ),
+                'nonce'    => wp_create_nonce( 'lmw_shop_filter_nonce' ),
+            )
+        );
+    }
+
     // Comment reply script (WordPress standard)
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
