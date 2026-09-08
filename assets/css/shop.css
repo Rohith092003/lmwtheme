@@ -3246,3 +3246,19 @@ form.track_order button[name="track"]:hover {
     transform: translateY(-2px) !important;
 }
 
+/* ─── Order Received / Thank You Page Spacing ─── */
+.woocommerce-order.lmw-thankyou-page,
+.woocommerce-checkout.woocommerce-order-received .woocommerce-order {
+    padding-top: 2rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 4rem !important;
+}
+
+.woocommerce-order-received .woocommerce-order h1.entry-title,
+.woocommerce-order-received h1.entry-title {
+    margin-top: 2rem !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--lmw-primary, #011F4C) !important;
+    font-family: var(--lmw-font-display, 'Playfair Display', serif) !important;
+}
+
