@@ -29,8 +29,6 @@ get_header();
 
     <?php get_template_part( 'template-parts/why-choose-us' ); ?>
 
-    <?php get_template_part( 'template-parts/newsletter' ); ?>
-
 </main>
 
 <?php
