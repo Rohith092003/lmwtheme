@@ -25,13 +25,38 @@
 .woocommerce-page ul.products,
 ul.products {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 1.75rem !important;
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
     float: none !important;
     clear: both !important;
+}
+
+@media (min-width: 1400px) {
+    /* When outside sidebar layout (like homepage), allow 4 columns */
+    .lmw-homepage ul.products {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .woocommerce ul.products,
+    .woocommerce-page ul.products,
+    ul.products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .woocommerce ul.products,
+    .woocommerce-page ul.products,
+    ul.products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.85rem !important;
+    }
 }
 
 .woocommerce ul.products::before,
