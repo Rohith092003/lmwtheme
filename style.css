@@ -108,6 +108,10 @@ button, input, select, textarea {
     font-size: inherit;
 }
 
+select::-ms-expand {
+    display: none;
+}
+
 /* ─── Layout ─────────────────────────────────────────── */
 
 .lmw-container {

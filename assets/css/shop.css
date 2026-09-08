@@ -227,12 +227,33 @@ ul.products li.product {
 }
 
 .woocommerce .woocommerce-ordering select {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--lmw-light-grey);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    background-color: var(--lmw-white);
-    margin-bottom: 1rem;
+    padding: 0.625rem 2.25rem 0.625rem 1rem !important;
+    border: 1.5px solid var(--lmw-light-grey) !important;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--lmw-primary) !important;
+    background-color: var(--lmw-white) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23011F4C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 14px 14px !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    cursor: pointer !important;
+    margin-bottom: 1rem !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.woocommerce .woocommerce-ordering select::-ms-expand {
+    display: none !important;
+}
+
+.woocommerce .woocommerce-ordering select:focus {
+    border-color: var(--lmw-accent) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(11, 134, 233, 0.15) !important;
 }
 
 /* ─── Pagination ─────────────────────────────────────── */
@@ -384,15 +405,7 @@ ul.products li.product {
     color: var(--lmw-dark-grey);
 }
 
-.woocommerce div.product .variations td.value select {
-    width: 100%;
-    max-width: 280px;
-    padding: 0.625rem 1rem;
-    border: 1px solid var(--lmw-light-grey);
-    border-radius: 4px;
-    font-size: 0.9375rem;
-    background-color: var(--lmw-white);
-}
+/* Variation selects styled in Cart & Variation section below */
 
 /* Quantity & Add to Cart */
 .woocommerce div.product form.cart {
@@ -2482,24 +2495,41 @@ ul.products li.product {
     display: inline-block !important;
 }
 
-.woocommerce div.product form.cart table.variations select {
+.woocommerce div.product form.cart table.variations select,
+.woocommerce div.product form.cart .variations select,
+.woocommerce div.product .variations td.value select {
     width: 100% !important;
+    max-width: 100% !important;
     height: 48px !important;
-    padding: 0 1rem !important;
+    padding: 0.625rem 2.5rem 0.625rem 1rem !important;
     font-size: 0.9375rem !important;
     font-weight: 500 !important;
     color: var(--lmw-primary) !important;
     background-color: var(--lmw-white) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23011F4C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 16px center !important;
+    background-size: 16px 16px !important;
     border: 1.5px solid var(--lmw-light-grey) !important;
     border-radius: 8px !important;
     outline: none !important;
     cursor: pointer !important;
     box-sizing: border-box !important;
-    transition: all 0.2s ease !important;
-    appearance: auto !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-.woocommerce div.product form.cart table.variations select:focus {
+.woocommerce div.product form.cart table.variations select::-ms-expand,
+.woocommerce div.product form.cart .variations select::-ms-expand,
+.woocommerce div.product .variations td.value select::-ms-expand {
+    display: none !important;
+}
+
+.woocommerce div.product form.cart table.variations select:focus,
+.woocommerce div.product form.cart .variations select:focus,
+.woocommerce div.product .variations td.value select:focus {
     border-color: var(--lmw-accent) !important;
     box-shadow: 0 0 0 3px rgba(11, 134, 233, 0.15) !important;
 }
@@ -3159,26 +3189,7 @@ ul.products li.product {
     width: 100% !important;
 }
 
-.woocommerce div.product form.cart .variations select {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 46px !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 8px !important;
-    border: 1.5px solid var(--lmw-light-grey) !important;
-    background-color: var(--lmw-white) !important;
-    color: var(--lmw-primary) !important;
-    font-size: 0.9375rem !important;
-    font-weight: 500 !important;
-    outline: none !important;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-    cursor: pointer !important;
-}
 
-.woocommerce div.product form.cart .variations select:focus {
-    border-color: var(--lmw-accent) !important;
-    box-shadow: 0 0 0 3px rgba(11, 134, 233, 0.15) !important;
-}
 
 .woocommerce div.product form.cart .reset_variations {
     display: inline-block !important;
