@@ -120,3 +120,21 @@ add_filter( 'pre_option_woocommerce_enable_myaccount_registration', function() {
 add_filter( 'pre_option_woocommerce_registration_generate_password', function() {
     return 'no';
 } );
+
+/**
+ * Ensure WooCommerce loads theme template overrides directly from theme's woocommerce/ directory.
+ */
+function lmw_theme_wc_locate_template( $template, $template_name, $template_path ) {
+    $candidates = array(
+        get_stylesheet_directory() . '/woocommerce/' . $template_name,
+        get_template_directory() . '/woocommerce/' . $template_name,
+        defined( 'LMW_THEME_DIR' ) ? LMW_THEME_DIR . '/woocommerce/' . $template_name : '',
+    );
+    foreach ( $candidates as $candidate ) {
+        if ( ! empty( $candidate ) && file_exists( $candidate ) ) {
+            return $candidate;
+        }
+    }
+    return $template;
+}
+add_filter( 'woocommerce_locate_template', 'lmw_theme_wc_locate_template', 999, 3 );
