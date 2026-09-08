@@ -2930,20 +2930,113 @@ ul.products li.product {
     text-align: center;
 }
 
-/* ─── Tracking & Policies ────────────────────────────── */
+/* ─── Tracking Page Layout & Spacing ─────────────────── */
+
+.lmw-tracking-page {
+    padding-top: 3.5rem !important;
+    padding-bottom: 6rem !important;
+}
 
 .lmw-tracking-wrapper {
-    max-width: 650px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.lmw-tracking-page .lmw-page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.lmw-tracking-page .lmw-page-title {
+    font-family: var(--lmw-font-display, 'Playfair Display', serif);
+    font-size: 2.35rem;
+    font-weight: 700;
+    color: var(--lmw-primary, #011F4C);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.lmw-tracking-page .lmw-page-subtitle {
+    font-size: 1rem;
+    color: var(--lmw-mid-grey, #64748B);
+    line-height: 1.6;
+    max-width: 540px;
     margin: 0 auto;
 }
 
 .lmw-tracking-card {
-    background: var(--lmw-white);
-    border: 1px solid var(--lmw-light-grey);
-    border-radius: 8px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    margin-bottom: 2rem;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 2.5rem 2.25rem;
+    box-shadow: 0 10px 35px rgba(1, 31, 76, 0.05);
+    margin-bottom: 2.5rem;
+}
+
+/* Tracking Help Card with generous margins and luxury styling */
+.lmw-tracking-help {
+    background: linear-gradient(180deg, #F8FAFC 0%, #F0F7FF 100%);
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(1, 31, 76, 0.04);
+    margin-top: 1rem;
+    margin-bottom: 3.5rem;
+}
+
+.lmw-tracking-help h3 {
+    font-family: var(--lmw-font-display, 'Playfair Display', serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--lmw-primary, #011F4C);
+    margin-bottom: 0.5rem;
+}
+
+.lmw-tracking-help p {
+    font-size: 0.95rem;
+    color: var(--lmw-mid-grey, #64748B);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.lmw-tracking-help .lmw-tracking-help__links {
+    display: flex;
+    justify-content: center;
+}
+
+.lmw-tracking-help .lmw-btn--outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2.25rem;
+    border: 1.5px solid var(--lmw-primary, #011F4C);
+    color: var(--lmw-primary, #011F4C);
+    background: #ffffff;
+    border-radius: 50px;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(1, 31, 76, 0.06);
+}
+
+.lmw-tracking-help .lmw-btn--outline:hover {
+    background: var(--lmw-primary, #011F4C);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(1, 31, 76, 0.25);
+}
+
+/* ─── Policies Page Spacing ──────────────────────────── */
+
+.lmw-policies-page {
+    padding-top: 3.5rem !important;
+    padding-bottom: 6rem !important;
 }
 
 .lmw-policies-layout {
@@ -3144,14 +3237,22 @@ ul.products li.product {
 }
 
 /* ─── Track Order Form Styling ─── */
-.lmw-tracking-page .woocommerce-form-track-order,
+.lmw-tracking-card .woocommerce-form-track-order,
+.lmw-tracking-card form.track_order {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
 form.track_order {
-    background: #ffffff !important;
-    border: 1px solid #E2E8F0 !important;
-    border-radius: 16px !important;
-    padding: 2.25rem 2rem !important;
-    box-shadow: 0 10px 30px rgba(1, 31, 76, 0.05) !important;
-    margin: 1.5rem 0 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
 }
 
 form.track_order p:first-of-type {
