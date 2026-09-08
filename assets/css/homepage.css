@@ -42,8 +42,8 @@
 .lmw-hero__overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(233, 69, 96, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 30% 80%, rgba(201, 169, 110, 0.06) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 70% 50%, rgba(11, 134, 233, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 80%, rgba(55, 168, 241, 0.10) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -59,8 +59,10 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--lmw-gold);
-    border: 1px solid rgba(201, 169, 110, 0.4);
+    color: var(--lmw-accent-hover);
+    border: 1px solid rgba(55, 168, 241, 0.5);
+    background: rgba(11, 134, 233, 0.12);
+    border-radius: 30px;
     padding: 0.5rem 1.25rem;
     margin-bottom: 1.5rem;
 }
@@ -383,7 +385,7 @@
     height: 72px;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    background-color: rgba(233, 69, 96, 0.08);
+    background-color: rgba(11, 134, 233, 0.10);
     color: var(--lmw-accent);
 }
 

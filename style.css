@@ -27,21 +27,24 @@ LMW Fashion Theme — All rights reserved.
 }
 
 :root {
-    /* Brand Colors */
-    --lmw-primary: #1a1a2e;
-    --lmw-primary-light: #16213e;
-    --lmw-accent: #e94560;
-    --lmw-accent-hover: #d63851;
-    --lmw-gold: #c9a96e;
-    --lmw-gold-light: #d4b97a;
+    /* Brand Colors — Premium Navy & Royal Blue Palette */
+    --lmw-primary: #011F4C;        /* Primary Navy */
+    --lmw-primary-deep: #021A46;   /* Deep Navy */
+    --lmw-primary-light: #072e6b;  /* Medium Navy */
+    --lmw-accent: #0B86E9;         /* Primary Blue */
+    --lmw-accent-hover: #37A8F1;   /* Medium Blue */
+    --lmw-accent-light: #e8f4fd;   /* Soft Ice Blue tint */
+    --lmw-gold: #37A8F1;          /* Accent highlight */
+    --lmw-gold-light: #6ac0f7;
+    --lmw-sale-badge: #d32f2f;     /* High-visibility discount red */
 
     /* Neutrals */
     --lmw-white: #ffffff;
-    --lmw-off-white: #f8f9fa;
-    --lmw-light-grey: #e9ecef;
-    --lmw-mid-grey: #6c757d;
-    --lmw-dark-grey: #343a40;
-    --lmw-black: #212529;
+    --lmw-off-white: #F5F8FB;      /* Off White */
+    --lmw-light-grey: #e1e7ee;     /* Soft blue-grey border */
+    --lmw-mid-grey: #5a6b7c;      /* Clean slate grey */
+    --lmw-dark-grey: #011F4C;     /* Primary Navy for text */
+    --lmw-black: #021A46;         /* Deep Navy */
 
     /* Typography */
     --lmw-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -136,12 +139,23 @@ button, input, select, textarea {
 }
 
 .lmw-btn--primary {
-    background-color: var(--lmw-primary);
+    background-color: var(--lmw-accent);
     color: var(--lmw-white);
 }
 
 .lmw-btn--primary:hover {
-    background-color: var(--lmw-accent);
+    background-color: var(--lmw-accent-hover);
+    color: var(--lmw-white);
+    box-shadow: 0 4px 14px rgba(11, 134, 233, 0.35);
+}
+
+.lmw-btn--secondary {
+    background-color: var(--lmw-primary);
+    color: var(--lmw-white);
+}
+
+.lmw-btn--secondary:hover {
+    background-color: var(--lmw-primary-light);
     color: var(--lmw-white);
 }
 
