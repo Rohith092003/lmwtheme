@@ -77,7 +77,7 @@ if ( empty( $card_image_url ) ) {
                 aria-label="<?php esc_attr_e( 'Add to wishlist', 'lmw-theme' ); ?>"
                 data-id="<?php echo esc_attr( $product_id ); ?>"
                 data-title="<?php echo esc_attr( $product->get_name() ); ?>"
-                data-price="<?php echo esc_attr( strip_tags( $product->get_price_html() ) ); ?>"
+                data-price="<?php echo esc_attr( wp_strip_all_tags( wc_price( $product->get_price() ) ) ); ?>"
                 data-image="<?php echo esc_url( $card_image_url ); ?>"
                 data-url="<?php echo esc_url( get_permalink() ); ?>">
             <svg class="lmw-icon-heart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

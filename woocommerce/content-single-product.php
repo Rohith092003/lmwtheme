@@ -141,7 +141,7 @@ if ( post_password_required() ) {
                         class="lmw-btn-wishlist-inline js-wishlist-toggle"
                         data-id="<?php echo esc_attr( $product_id ); ?>"
                         data-title="<?php echo esc_attr( $product->get_name() ); ?>"
-                        data-price="<?php echo esc_attr( strip_tags( $product->get_price_html() ) ); ?>"
+                        data-price="<?php echo esc_attr( wp_strip_all_tags( wc_price( $product->get_price() ) ) ); ?>"
                         data-image="<?php echo esc_url( wp_get_attachment_image_url( $product->get_image_id(), 'woocommerce_thumbnail' ) ?: wc_placeholder_img_src( 'woocommerce_thumbnail' ) ); ?>"
                         data-url="<?php echo esc_url( get_permalink() ); ?>">
                     <svg class="lmw-icon-heart" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

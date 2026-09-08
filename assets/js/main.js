@@ -231,6 +231,23 @@
             });
         },
 
+        formatPrice: function (raw) {
+            if (!raw) return '';
+            var cleaned = String(raw)
+                .replace(/Original price was:[\s\S]*?Current price is:\s*/gi, '')
+                .replace(/Original price was:[\s\S]*/gi, '')
+                .trim();
+            if (!cleaned) {
+                var match = String(raw).match(/([₹$€£][\d,.]+(\.\d{2})?)/g);
+                if (match && match.length > 0) {
+                    cleaned = match[match.length - 1];
+                } else {
+                    cleaned = raw;
+                }
+            }
+            return cleaned;
+        },
+
         renderPage: function () {
             var container = document.getElementById('lmw-wishlist-container');
             if (!container) {
@@ -256,7 +273,9 @@
             grid.style.display = 'grid';
 
             var html = '';
+            var self = this;
             items.forEach(function (item) {
+                var displayPrice = self.formatPrice(item.price);
                 html += '<div class="lmw-wishlist-item" data-id="' + item.id + '">';
                 html += '  <div class="lmw-wishlist-item__img">';
                 html += '    <a href="' + item.url + '"><img src="' + item.image + '" alt="' + item.title + '"></a>';
@@ -264,7 +283,7 @@
                 html += '  </div>';
                 html += '  <div class="lmw-wishlist-item__body">';
                 html += '    <h3 class="lmw-wishlist-item__title"><a href="' + item.url + '">' + item.title + '</a></h3>';
-                html += '    <div class="lmw-wishlist-item__price">' + item.price + '</div>';
+                html += '    <div class="lmw-wishlist-item__price">' + displayPrice + '</div>';
                 html += '    <a href="' + item.url + '" class="lmw-btn lmw-btn--primary lmw-btn--sm lmw-wishlist-item__btn">View Product</a>';
                 html += '  </div>';
                 html += '</div>';
@@ -304,7 +323,7 @@
                 var itemData = {
                     id: btn.getAttribute('data-id'),
                     title: btn.getAttribute('data-title'),
-                    price: btn.getAttribute('data-price'),
+                    price: self.formatPrice(btn.getAttribute('data-price')),
                     image: btn.getAttribute('data-image'),
                     url: btn.getAttribute('data-url')
                 };
