@@ -122,9 +122,33 @@ function lmw_theme_default_primary_menu() {
  */
 function lmw_theme_default_footer_menu() {
     echo '<ul class="lmw-footer__menu">';
-    echo '<li><a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '">' . esc_html__( 'Privacy Policy', 'lmw-theme' ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/terms-conditions/' ) ) . '">' . esc_html__( 'Terms of Service', 'lmw-theme' ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/refund_returns/' ) ) . '">' . esc_html__( 'Shipping & Returns', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/policies/#privacy' ) ) . '">' . esc_html__( 'Privacy Policy', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/policies/#terms' ) ) . '">' . esc_html__( 'Terms of Service', 'lmw-theme' ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/policies/#returns' ) ) . '">' . esc_html__( 'Shipping & Returns', 'lmw-theme' ) . '</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">' . esc_html__( 'Contact', 'lmw-theme' ) . '</a></li>';
     echo '</ul>';
 }
+
+/**
+ * Virtual router to serve page-contact.php on /contact/ and redirect policy subpaths.
+ */
+function lmw_theme_virtual_page_router( $template ) {
+    if ( is_404() ) {
+        $path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+        
+        if ( 'contact' === $path || 'contact-us' === $path ) {
+            status_header( 200 );
+            $contact_file = LMW_THEME_DIR . '/page-contact.php';
+            if ( file_exists( $contact_file ) ) {
+                return $contact_file;
+            }
+        }
+        
+        if ( in_array( $path, array( 'privacy-policy', 'terms-conditions', 'refund_returns', 'refund-returns', 'shipping-returns' ), true ) ) {
+            wp_safe_redirect( home_url( '/policies/' ), 301 );
+            exit;
+        }
+    }
+    return $template;
+}
+add_filter( 'template_include', 'lmw_theme_virtual_page_router', 99 );

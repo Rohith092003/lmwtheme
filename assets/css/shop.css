@@ -3142,3 +3142,107 @@ ul.products li.product {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ─── Track Order Form Styling ─── */
+.lmw-tracking-page .woocommerce-form-track-order,
+form.track_order {
+    background: #ffffff !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 16px !important;
+    padding: 2.25rem 2rem !important;
+    box-shadow: 0 10px 30px rgba(1, 31, 76, 0.05) !important;
+    margin: 1.5rem 0 !important;
+}
+
+form.track_order p:first-of-type {
+    font-size: 0.9375rem;
+    color: var(--lmw-mid-grey);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+form.track_order .form-row label {
+    display: block;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--lmw-primary, #011F4C);
+    margin-bottom: 0.45rem;
+}
+
+form.track_order .form-row input.input-text {
+    width: 100% !important;
+    height: 50px !important;
+    padding: 0 1.15rem !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
+    font-size: 0.9375rem !important;
+    color: var(--lmw-primary, #011F4C) !important;
+    background: #FAFBFD !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+}
+
+form.track_order .form-row input.input-text:focus {
+    outline: none !important;
+    border-color: var(--lmw-accent, #0B86E9) !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(11, 134, 233, 0.12) !important;
+}
+
+form.track_order button[type="submit"],
+form.track_order input[type="submit"],
+form.track_order button[name="track"] {
+    width: 100% !important;
+    height: 50px !important;
+    background: var(--lmw-primary, #011F4C) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 14px rgba(1, 31, 76, 0.2) !important;
+    margin-top: 0.75rem !important;
+}
+
+form.track_order button[type="submit"]:hover,
+form.track_order input[type="submit"]:hover,
+form.track_order button[name="track"]:hover {
+    background: var(--lmw-accent, #0B86E9) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(11, 134, 233, 0.35) !important;
+}
+
+/* ─── Cart & Checkout Primary Action Buttons ─── */
+.wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button,
+.wc-block-checkout__actions button {
+    background: linear-gradient(135deg, #011F4C 0%, #021A46 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    height: 52px !important;
+    font-family: var(--lmw-font-body, 'Inter', sans-serif) !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 6px 20px rgba(1, 31, 76, 0.22) !important;
+    cursor: pointer !important;
+}
+
+.wc-block-cart__submit-button:hover,
+.wc-block-components-checkout-place-order-button:hover,
+.wc-block-checkout__actions button:hover {
+    background: linear-gradient(135deg, #0B86E9 0%, #096ec2 100%) !important;
+    box-shadow: 0 8px 26px rgba(11, 134, 233, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
