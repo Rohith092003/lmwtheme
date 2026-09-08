@@ -591,6 +591,37 @@ ul.products li.product {
     box-shadow: 0 0 0 2px rgba(26, 26, 46, 0.1);
 }
 
+.woocommerce form .form-row-first,
+.woocommerce form .form-row-last {
+    width: 48% !important;
+    float: left !important;
+    clear: none !important;
+}
+
+.woocommerce form .form-row-last {
+    float: right !important;
+}
+
+.woocommerce form .form-row-wide {
+    clear: both !important;
+    width: 100% !important;
+    float: none !important;
+}
+
+.woocommerce form .form-row::after {
+    content: "" !important;
+    display: table !important;
+    clear: both !important;
+}
+
+@media (max-width: 600px) {
+    .woocommerce form .form-row-first,
+    .woocommerce form .form-row-last {
+        width: 100% !important;
+        float: none !important;
+    }
+}
+
 .woocommerce #payment {
     background-color: var(--lmw-off-white);
     border-radius: 8px;
@@ -616,21 +647,42 @@ ul.products li.product {
 
 /* ─── My Account ─────────────────────────────────────── */
 
-.woocommerce-account .woocommerce-MyAccount-navigation {
-    width: 25%;
-    float: left;
+/* ─── My Account ─────────────────────────────────────── */
+
+.woocommerce-account .woocommerce {
+    display: grid !important;
+    grid-template-columns: 260px minmax(0, 1fr) !important;
+    gap: 3rem !important;
+    align-items: start !important;
+    margin-bottom: 4rem !important;
+}
+
+.woocommerce-account .woocommerce::before,
+.woocommerce-account .woocommerce::after {
+    display: none !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation,
+.woocommerce-account .woocommerce-MyAccount-content {
+    width: 100% !important;
+    float: none !important;
+    min-width: 0 !important;
 }
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     border: 1px solid var(--lmw-light-grey);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(1, 31, 76, 0.04);
 }
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul li {
     border-bottom: 1px solid var(--lmw-light-grey);
+    margin: 0;
 }
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul li:last-child {
@@ -639,9 +691,9 @@ ul.products li.product {
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul li a {
     display: block;
-    padding: 0.875rem 1.25rem;
+    padding: 0.95rem 1.25rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--lmw-dark-grey);
     transition: all var(--lmw-transition);
 }
@@ -653,35 +705,169 @@ ul.products li.product {
 }
 
 .woocommerce-account .woocommerce-MyAccount-content {
-    width: 72%;
-    float: right;
+    background: #ffffff;
+    border-radius: 12px;
 }
 
-/* ─── WooCommerce Notices ────────────────────────────── */
+/* ─── WooCommerce Notices (Zero Overlap & High-End Polish) ─ */
 
 .woocommerce .woocommerce-message,
 .woocommerce .woocommerce-info,
-.woocommerce .woocommerce-error {
-    border-top: none;
-    border-left: 4px solid;
-    border-radius: 4px;
-    padding: 1rem 1.25rem;
-    font-size: 0.9375rem;
+.woocommerce .woocommerce-error,
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-Notice,
+.woocommerce-notice {
+    position: relative !important;
+    border-top: none !important;
+    border-right: 1px solid #E2E8F0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    border-left: 4px solid !important;
+    border-radius: 10px !important;
+    padding: 1.25rem 1.5rem 1.25rem 3.75rem !important;
+    font-size: 0.9375rem !important;
+    line-height: 1.6 !important;
+    margin: 0 0 1.75rem 0 !important;
+    clear: both !important;
+    list-style: none !important;
+    box-shadow: 0 2px 12px rgba(1, 31, 76, 0.04) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
 }
 
-.woocommerce .woocommerce-message {
-    border-left-color: var(--lmw-accent);
-    background-color: rgba(233, 69, 96, 0.06);
+.woocommerce .woocommerce-message::before,
+.woocommerce .woocommerce-info::before,
+.woocommerce .woocommerce-error::before,
+.woocommerce-message::before,
+.woocommerce-info::before,
+.woocommerce-error::before,
+.woocommerce-Notice::before,
+.woocommerce-notice::before {
+    position: absolute !important;
+    left: 1.35rem !important;
+    top: 1.25rem !important;
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
 }
 
-.woocommerce .woocommerce-info {
-    border-left-color: #3498db;
-    background-color: rgba(52, 152, 219, 0.06);
+.woocommerce .woocommerce-info,
+.woocommerce-info {
+    border-left-color: #0B86E9 !important;
+    background-color: #F0F7FF !important;
+    color: #011F4C !important;
 }
 
-.woocommerce .woocommerce-error {
-    border-left-color: var(--lmw-accent);
-    background-color: rgba(231, 76, 60, 0.06);
+.woocommerce .woocommerce-info::before,
+.woocommerce-info::before {
+    color: #0B86E9 !important;
+}
+
+.woocommerce .woocommerce-message,
+.woocommerce-message {
+    border-left-color: #10B981 !important;
+    background-color: #F0FDF4 !important;
+    color: #065F46 !important;
+}
+
+.woocommerce .woocommerce-message::before,
+.woocommerce-message::before {
+    color: #10B981 !important;
+}
+
+.woocommerce .woocommerce-error,
+.woocommerce-error {
+    border-left-color: #EF4444 !important;
+    background-color: #FEF2F2 !important;
+    color: #991B1B !important;
+}
+
+.woocommerce .woocommerce-error::before,
+.woocommerce-error::before {
+    color: #EF4444 !important;
+}
+
+.woocommerce-error li,
+.woocommerce .woocommerce-error li {
+    list-style: none !important;
+    margin: 0 0 0.35rem 0 !important;
+    padding: 0 !important;
+}
+
+.woocommerce-error li:last-child,
+.woocommerce .woocommerce-error li:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Notice Action Buttons */
+.woocommerce-message .button,
+.woocommerce-info .button,
+.woocommerce-error .button,
+.woocommerce .woocommerce-message .button,
+.woocommerce .woocommerce-info .button,
+.woocommerce .woocommerce-error .button {
+    float: right !important;
+    margin: -0.25rem 0 0 1rem !important;
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    background-color: var(--lmw-primary) !important;
+    color: var(--lmw-white) !important;
+    border: none !important;
+    line-height: 1.5 !important;
+    box-shadow: none !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.woocommerce-message .button:hover,
+.woocommerce-info .button:hover,
+.woocommerce-error .button:hover,
+.woocommerce .woocommerce-message .button:hover,
+.woocommerce .woocommerce-info .button:hover,
+.woocommerce .woocommerce-error .button:hover {
+    background-color: var(--lmw-accent) !important;
+    color: var(--lmw-white) !important;
+}
+
+@media (max-width: 600px) {
+    .woocommerce .woocommerce-message,
+    .woocommerce .woocommerce-info,
+    .woocommerce .woocommerce-error,
+    .woocommerce-message,
+    .woocommerce-info,
+    .woocommerce-error,
+    .woocommerce-Notice,
+    .woocommerce-notice {
+        padding: 1rem 1.25rem 1rem 3.25rem !important;
+    }
+    .woocommerce .woocommerce-message::before,
+    .woocommerce .woocommerce-info::before,
+    .woocommerce .woocommerce-error::before,
+    .woocommerce-message::before,
+    .woocommerce-info::before,
+    .woocommerce-error::before {
+        left: 1rem !important;
+        top: 1rem !important;
+    }
+    .woocommerce-message .button,
+    .woocommerce-info .button,
+    .woocommerce-error .button,
+    .woocommerce .woocommerce-message .button,
+    .woocommerce .woocommerce-info .button,
+    .woocommerce .woocommerce-error .button {
+        float: none !important;
+        display: block !important;
+        margin: 0.75rem 0 0 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
 }
 
 /* ─── Breadcrumb ─────────────────────────────────────── */

@@ -420,12 +420,19 @@ body.lmw-modal-open {
 
 .lmw-search-field {
     flex: 1;
+    min-width: 0;
     border: none;
     outline: none;
     font-size: 1.25rem;
     font-family: var(--lmw-font-primary);
     color: var(--lmw-dark-grey);
     background: transparent;
+}
+
+@media (max-width: 600px) {
+    .lmw-search-field {
+        font-size: 1rem;
+    }
 }
 
 .lmw-search-close-btn {
