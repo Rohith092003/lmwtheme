@@ -106,3 +106,17 @@ function lmw_theme_wc_breadcrumb_defaults( $defaults ) {
     return $defaults;
 }
 add_filter( 'woocommerce_breadcrumb_defaults', 'lmw_theme_wc_breadcrumb_defaults' );
+
+/**
+ * Enable customer registration on the My Account page.
+ */
+add_filter( 'pre_option_woocommerce_enable_myaccount_registration', function() {
+    return 'yes';
+} );
+
+/**
+ * Allow customers to create their own password during registration.
+ */
+add_filter( 'pre_option_woocommerce_registration_generate_password', function() {
+    return 'no';
+} );

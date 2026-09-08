@@ -819,68 +819,550 @@ ul.products li.product {
 .woocommerce-account:not(.logged-in) .woocommerce,
 .woocommerce-account .woocommerce:not(:has(.woocommerce-MyAccount-navigation)) {
     display: block !important;
-    max-width: 540px !important;
-    margin: 0 auto 4rem auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
 }
 
-.woocommerce #customer_login {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-    gap: 2.5rem !important;
-    max-width: 960px !important;
-    margin: 0 auto 4rem auto !important;
+/* ─── Luxury Authentication Experience (Login & Signup) ─ */
+
+.lmw-auth-wrapper {
+    max-width: 1080px;
+    margin: 1.5rem auto 4.5rem auto;
 }
 
-.woocommerce #customer_login .col-1,
-.woocommerce #customer_login .col-2 {
-    float: none !important;
-    width: 100% !important;
-    padding: 0 !important;
-}
-
-.woocommerce-account .woocommerce-form-login,
-.woocommerce-account .woocommerce-form-register {
+.lmw-auth-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
     background: #ffffff;
-    border: 1px solid var(--lmw-light-grey);
-    border-radius: 12px;
-    padding: 2.25rem 2rem;
-    box-shadow: 0 4px 20px rgba(1, 31, 76, 0.06);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(1, 31, 76, 0.08), 0 2px 6px rgba(1, 31, 76, 0.04);
+    border: 1px solid #E2E8F0;
 }
 
-.woocommerce-account .woocommerce-form-login .form-row,
-.woocommerce-account .woocommerce-form-register .form-row {
+.lmw-auth-container.single-form {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* Left Column: Form Card */
+.lmw-auth-card {
+    padding: 3.5rem 3.5rem 3rem 3.5rem;
+    background: #ffffff;
+}
+
+.lmw-auth-header {
+    margin-bottom: 2rem;
+}
+
+.lmw-auth-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--lmw-accent);
+    background: #F0F7FF;
+    border: 1px solid rgba(11, 134, 233, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    margin-bottom: 0.85rem;
+}
+
+.lmw-auth-title {
+    font-family: var(--lmw-font-heading);
+    font-size: 2.15rem;
+    font-weight: 700;
+    color: var(--lmw-primary);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.lmw-auth-subtitle {
+    font-size: 0.9375rem;
+    color: var(--lmw-mid-grey);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Tabs Switcher */
+.lmw-auth-tabs {
+    display: flex;
+    background: #F1F5F9;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    gap: 4px;
+}
+
+.lmw-auth-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--lmw-mid-grey);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.lmw-auth-tab:hover {
+    color: var(--lmw-primary);
+}
+
+.lmw-auth-tab.is-active {
+    background: #ffffff;
+    color: var(--lmw-primary);
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(1, 31, 76, 0.08);
+}
+
+.lmw-auth-tab.is-active svg {
+    color: var(--lmw-accent);
+}
+
+/* Auth Panes */
+.lmw-auth-pane {
+    display: none;
+}
+
+.lmw-auth-pane.is-active {
+    display: block;
+    animation: lmwFadeInAuth 0.3s ease;
+}
+
+@keyframes lmwFadeInAuth {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styled Form Elements */
+.lmw-form-styled {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.lmw-form-group {
+    margin-bottom: 1.35rem;
+}
+
+.lmw-form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--lmw-primary);
+    margin-bottom: 0.45rem;
+}
+
+.lmw-form-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.45rem;
+}
+
+.lmw-form-label-row .lmw-form-label {
+    margin-bottom: 0;
+}
+
+.lmw-lost-password-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--lmw-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.lmw-lost-password-link:hover {
+    color: var(--lmw-accent-hover);
+    text-decoration: underline;
+}
+
+.lmw-input-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lmw-field-icon {
+    position: absolute;
+    left: 1rem;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    transition: color 0.2s ease;
+}
+
+.lmw-input-icon-wrapper:focus-within .lmw-field-icon {
+    color: var(--lmw-accent);
+}
+
+.lmw-form-input {
+    width: 100% !important;
+    height: 48px !important;
+    padding: 0 2.85rem 0 2.85rem !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    font-size: 0.9375rem !important;
+    color: var(--lmw-primary) !important;
+    background: #FAFBFD !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+}
+
+.lmw-form-input:focus {
+    border-color: var(--lmw-accent) !important;
+    background: #ffffff !important;
+    outline: none !important;
+    box-shadow: 0 0 0 4px rgba(11, 134, 233, 0.12) !important;
+}
+
+.lmw-form-input::placeholder {
+    color: #94A3B8;
+}
+
+.lmw-toggle-pwd-btn {
+    position: absolute;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition: color 0.2s ease;
+}
+
+.lmw-toggle-pwd-btn:hover {
+    color: var(--lmw-primary);
+}
+
+/* Custom Checkbox */
+.lmw-form-utility-row {
+    margin-bottom: 1.5rem;
+}
+
+.lmw-custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.875rem;
+    color: var(--lmw-mid-grey);
+}
+
+.lmw-custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lmw-checkbox-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid #CBD5E1;
+    background: #FAFBFD;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.lmw-custom-checkbox:hover .lmw-checkbox-indicator {
+    border-color: var(--lmw-accent);
+}
+
+.lmw-custom-checkbox input[type="checkbox"]:checked + .lmw-checkbox-indicator {
+    background: var(--lmw-accent);
+    border-color: var(--lmw-accent);
+}
+
+.lmw-custom-checkbox input[type="checkbox"]:checked + .lmw-checkbox-indicator::after {
+    content: '';
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-top: -2px;
+}
+
+/* Disclaimer & Info Notes */
+.lmw-auth-disclaimer {
+    font-size: 0.8125rem;
+    color: var(--lmw-mid-grey);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.lmw-auth-disclaimer a {
+    color: var(--lmw-accent);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.lmw-auth-info-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: #F0F7FF;
+    border: 1px solid rgba(11, 134, 233, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--lmw-primary);
+    line-height: 1.4;
     margin-bottom: 1.25rem;
 }
 
-.woocommerce-account .woocommerce-form-login label,
-.woocommerce-account .woocommerce-form-register label {
-    display: block;
-    font-weight: 500;
-    font-size: 0.875rem;
-    margin-bottom: 0.35rem;
+.lmw-auth-info-note svg {
+    color: var(--lmw-accent);
+    flex-shrink: 0;
+    margin-top: 1px;
 }
 
-.woocommerce-account .woocommerce-form-login .woocommerce-form-login__rememberme {
+/* Submit Action Button */
+.lmw-form-action-group {
+    margin-bottom: 1.25rem;
+}
+
+.lmw-auth-submit-btn {
+    width: 100% !important;
+    height: 50px !important;
+    background: var(--lmw-primary) !important;
+    color: var(--lmw-white) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 10px !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 16px rgba(1, 31, 76, 0.15) !important;
+}
+
+.lmw-auth-submit-btn:hover {
+    background: var(--lmw-accent) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(11, 134, 233, 0.35) !important;
+}
+
+.lmw-auth-submit-btn--register {
+    background: var(--lmw-accent) !important;
+    box-shadow: 0 4px 16px rgba(11, 134, 233, 0.25) !important;
+}
+
+.lmw-auth-submit-btn--register:hover {
+    background: var(--lmw-accent-hover) !important;
+}
+
+/* Switch Prompt */
+.lmw-auth-switch-prompt {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--lmw-mid-grey);
+    margin-top: 1.5rem;
+}
+
+.lmw-link-btn {
+    background: none;
+    border: none;
+    color: var(--lmw-accent);
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    text-decoration: underline;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.lmw-link-btn:hover {
+    color: var(--lmw-accent-hover);
+}
+
+/* Right Column: Member Perks Card */
+.lmw-auth-perks-card {
+    background: linear-gradient(145deg, #011F4C 0%, #021A46 60%, #062f70 100%);
+    padding: 3.5rem 3rem;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.lmw-auth-perks-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(11, 134, 233, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.lmw-auth-perks-header {
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.lmw-perks-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #37A8F1;
+    background: rgba(55, 168, 241, 0.12);
+    border: 1px solid rgba(55, 168, 241, 0.3);
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    margin-bottom: 0.85rem;
+}
+
+.lmw-perks-title {
+    font-family: var(--lmw-font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+
+.lmw-perks-desc {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.lmw-perks-list {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2rem;
+}
+
+.lmw-perk-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.lmw-perk-item:last-child {
+    margin-bottom: 0;
+}
+
+.lmw-perk-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    cursor: pointer;
+    justify-content: center;
+    color: #37A8F1;
+    flex-shrink: 0;
 }
 
-.woocommerce-account .woocommerce-form-login .button,
-.woocommerce-account .woocommerce-form-register .button {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-    margin-top: 0.5rem;
-    font-weight: 600;
+.lmw-perk-info strong {
+    display: block;
     font-size: 0.9375rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
 }
 
-.woocommerce-account .woocommerce-form-login .lost_password {
-    margin-top: 1rem;
-    margin-bottom: 0;
-    text-align: center;
+.lmw-perk-info p {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.45;
+    margin: 0;
+}
+
+.lmw-perks-footer {
+    position: relative;
+    z-index: 2;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lmw-perks-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 0.4rem;
+}
+
+.lmw-perks-social-proof {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.02em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+    .lmw-auth-container {
+        grid-template-columns: 1fr;
+    }
+    .lmw-auth-card {
+        padding: 2.5rem 2rem;
+    }
+    .lmw-auth-perks-card {
+        padding: 2.5rem 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .lmw-auth-wrapper {
+        margin-top: 0.5rem;
+        margin-bottom: 3rem;
+    }
+    .lmw-auth-card {
+        padding: 2rem 1.25rem;
+    }
+    .lmw-auth-title {
+        font-size: 1.65rem;
+    }
+    .lmw-auth-perks-card {
+        padding: 2rem 1.25rem;
+    }
+    .lmw-perks-title {
+        font-size: 1.4rem;
+    }
 }
 
 .woocommerce-account .woocommerce::before,

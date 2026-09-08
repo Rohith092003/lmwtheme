@@ -383,6 +383,100 @@
     }
 
     /**
+     * Authentication (Login & Signup) tabs and interactions
+     */
+    function initAuthForms() {
+        var container = document.getElementById('customer_login');
+        if (!container) {
+            return;
+        }
+
+        var tabLogin = document.getElementById('tab-btn-login');
+        var tabRegister = document.getElementById('tab-btn-register');
+        var paneLogin = document.getElementById('auth-pane-login');
+        var paneRegister = document.getElementById('auth-pane-register');
+        var titleEl = document.getElementById('lmw-auth-dynamic-title');
+        var subtitleEl = document.getElementById('lmw-auth-dynamic-subtitle');
+
+        function switchTab(target) {
+            if (target === 'register' && tabRegister && paneRegister) {
+                if (tabLogin) {
+                    tabLogin.classList.remove('is-active');
+                    tabLogin.setAttribute('aria-selected', 'false');
+                }
+                tabRegister.classList.add('is-active');
+                tabRegister.setAttribute('aria-selected', 'true');
+
+                if (paneLogin) paneLogin.classList.remove('is-active');
+                paneRegister.classList.add('is-active');
+
+                if (titleEl) titleEl.textContent = 'Create Your Account';
+                if (subtitleEl) subtitleEl.textContent = 'Join the LMW Sartorial Club for exclusive access & member privileges.';
+            } else if (paneLogin) {
+                if (tabRegister) {
+                    tabRegister.classList.remove('is-active');
+                    tabRegister.setAttribute('aria-selected', 'false');
+                }
+                if (tabLogin) {
+                    tabLogin.classList.add('is-active');
+                    tabLogin.setAttribute('aria-selected', 'true');
+                }
+
+                if (paneRegister) paneRegister.classList.remove('is-active');
+                paneLogin.classList.add('is-active');
+
+                if (titleEl) titleEl.textContent = 'Sign In to Your Account';
+                if (subtitleEl) subtitleEl.textContent = 'Welcome back. Manage your bespoke orders and saved wardrobe.';
+            }
+        }
+
+        if (tabLogin) {
+            tabLogin.addEventListener('click', function () {
+                switchTab('login');
+            });
+        }
+
+        if (tabRegister) {
+            tabRegister.addEventListener('click', function () {
+                switchTab('register');
+            });
+        }
+
+        // Delegate switch tab prompt buttons
+        container.addEventListener('click', function (e) {
+            var switchBtn = e.target.closest('.js-switch-tab');
+            if (switchBtn) {
+                e.preventDefault();
+                var target = switchBtn.getAttribute('data-target');
+                switchTab(target);
+            }
+
+            // Password visibility toggle
+            var pwdToggle = e.target.closest('.js-toggle-pwd');
+            if (pwdToggle) {
+                e.preventDefault();
+                var wrapper = pwdToggle.closest('.lmw-input-icon-wrapper');
+                if (wrapper) {
+                    var input = wrapper.querySelector('.js-password-field');
+                    var eyeShow = pwdToggle.querySelector('.lmw-eye-show');
+                    var eyeHide = pwdToggle.querySelector('.lmw-eye-hide');
+                    if (input) {
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            if (eyeShow) eyeShow.style.display = 'none';
+                            if (eyeHide) eyeHide.style.display = 'block';
+                        } else {
+                            input.type = 'password';
+                            if (eyeShow) eyeShow.style.display = 'block';
+                            if (eyeHide) eyeHide.style.display = 'none';
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * Initialize on DOM ready
      */
     document.addEventListener('DOMContentLoaded', function () {
@@ -391,6 +485,7 @@
         initSearchModal();
         initSizeGuideModal();
         initQuantityButtons();
+        initAuthForms();
         Wishlist.init();
     });
 })();
