@@ -1400,6 +1400,7 @@ ul.products li.product {
     color: var(--lmw-primary, #011F4C);
     font-weight: 700;
     letter-spacing: -0.02em;
+    text-transform: capitalize;
     margin: 0;
 }
 
@@ -1643,6 +1644,11 @@ ul.products li.product {
     border-radius: 4px !important;
     cursor: pointer !important;
     margin: 0 !important;
+}
+
+#customer_login .col-1 .form-row:has(.woocommerce-form-login__submit) {
+    margin-top: auto !important;
+    padding-top: 1rem !important;
 }
 
 /* Submit Buttons */
