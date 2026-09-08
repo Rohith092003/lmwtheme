@@ -124,3 +124,40 @@ function lmw_theme_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'lmw_theme_widgets_init' );
+
+/**
+ * Auto-create required utility pages if they don't exist.
+ */
+function lmw_theme_create_required_pages() {
+    $pages = array(
+        'wishlist' => array(
+            'title'    => 'Wishlist',
+            'template' => 'page-wishlist.php',
+        ),
+        'order-tracking' => array(
+            'title'    => 'Track Order',
+            'template' => 'page-order-tracking.php',
+        ),
+        'policies' => array(
+            'title'    => 'Policies & Returns',
+            'template' => 'page-policies.php',
+        ),
+    );
+
+    foreach ( $pages as $slug => $data ) {
+        $existing = get_page_by_path( $slug );
+        if ( ! $existing ) {
+            $page_id = wp_insert_post( array(
+                'post_title'     => $data['title'],
+                'post_name'      => $slug,
+                'post_status'    => 'publish',
+                'post_type'      => 'page',
+                'comment_status' => 'closed',
+            ) );
+            if ( $page_id && ! is_wp_error( $page_id ) && ! empty( $data['template'] ) ) {
+                update_post_meta( $page_id, '_wp_page_template', $data['template'] );
+            }
+        }
+    }
+}
+add_action( 'init', 'lmw_theme_create_required_pages' );
