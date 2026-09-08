@@ -48,12 +48,21 @@ add_action( 'wp_enqueue_scripts', 'lmw_theme_woocommerce_styles' );
  * Disable default WooCommerce styles that we override.
  */
 function lmw_theme_dequeue_wc_styles( $enqueue_styles ) {
-    // Keep WooCommerce's general and layout styles,
-    // remove smallscreen (we handle responsive ourselves)
+    // Remove WooCommerce float-based layouts and smallscreen CSS;
+    // our theme provides full modern flexbox & grid responsive styling.
     unset( $enqueue_styles['woocommerce-smallscreen'] );
+    unset( $enqueue_styles['woocommerce-layout'] );
     return $enqueue_styles;
 }
 add_filter( 'woocommerce_enqueue_styles', 'lmw_theme_dequeue_wc_styles' );
+
+/**
+ * Filter default WooCommerce placeholder image to use our high-res AI studio shirt image.
+ */
+function lmw_theme_wc_placeholder_img_src( $src ) {
+    return LMW_THEME_URI . '/assets/images/shirt-1.jpg';
+}
+add_filter( 'woocommerce_placeholder_img_src', 'lmw_theme_wc_placeholder_img_src' );
 
 /**
  * Change number of products per row.

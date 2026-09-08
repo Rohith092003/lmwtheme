@@ -2,13 +2,39 @@
 /**
  * Template Part: Featured Products
  *
- * Displays products tagged as "featured" in WooCommerce.
+ * Displays products tagged as "featured" in WooCommerce,
+ * with a fallback to top products if none are tagged.
  *
  * @package LMW_Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
+}
+
+$featured_args = array(
+    'post_type'      => 'product',
+    'posts_per_page' => 8,
+    'post_status'    => 'publish',
+    'tax_query'      => array(
+        array(
+            'taxonomy' => 'product_visibility',
+            'field'    => 'name',
+            'terms'    => 'featured',
+        ),
+    ),
+);
+$featured_query = new WP_Query( $featured_args );
+
+// Fallback to latest products if no products are marked 'featured'
+if ( ! $featured_query->have_posts() ) {
+    $featured_query = new WP_Query( array(
+        'post_type'      => 'product',
+        'posts_per_page' => 8,
+        'post_status'    => 'publish',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ) );
 }
 ?>
 
@@ -20,9 +46,16 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 
         <div class="lmw-products-grid">
-            <?php
-            echo do_shortcode( '[products limit="8" columns="4" visibility="featured" orderby="date" order="DESC"]' );
-            ?>
+            <?php if ( $featured_query->have_posts() ) : ?>
+                <ul class="products lmw-products-grid__list">
+                    <?php while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                    <?php endwhile; ?>
+                </ul>
+                <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+                <p class="lmw-no-products"><?php esc_html_e( 'No featured products found.', 'lmw-theme' ); ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="lmw-section__footer">

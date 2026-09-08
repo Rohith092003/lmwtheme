@@ -10,6 +10,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+$new_query = new WP_Query( array(
+    'post_type'      => 'product',
+    'posts_per_page' => 8,
+    'post_status'    => 'publish',
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+) );
 ?>
 
 <section class="lmw-section lmw-products-section lmw-products-section--alt" id="new-arrivals">
@@ -20,9 +28,16 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 
         <div class="lmw-products-grid">
-            <?php
-            echo do_shortcode( '[products limit="8" columns="4" orderby="date" order="DESC"]' );
-            ?>
+            <?php if ( $new_query->have_posts() ) : ?>
+                <ul class="products lmw-products-grid__list">
+                    <?php while ( $new_query->have_posts() ) : $new_query->the_post(); ?>
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                    <?php endwhile; ?>
+                </ul>
+                <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+                <p class="lmw-no-products"><?php esc_html_e( 'No new arrivals found.', 'lmw-theme' ); ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="lmw-section__footer">
