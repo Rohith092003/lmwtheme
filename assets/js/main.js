@@ -237,7 +237,7 @@
                 .replace(/Original price was:[\s\S]*?Current price is:\s*/gi, ' ')
                 .replace(/Original price was:[\s\S]*/gi, '')
                 .trim();
-            var matches = str.match(/([₹$€£][\d,.]+(\.\d{2})?)/g);
+            var matches = str.match(/([₹$€£][\d,]+(\.\d{2})?)/g);
             if (matches && matches.length >= 2) {
                 return '<span class="lmw-strike">' + matches[0] + '</span> <span class="lmw-current-price">' + matches[matches.length - 1] + '</span>';
             }
