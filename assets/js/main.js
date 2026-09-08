@@ -233,19 +233,18 @@
 
         formatPrice: function (raw) {
             if (!raw) return '';
-            var cleaned = String(raw)
-                .replace(/Original price was:[\s\S]*?Current price is:\s*/gi, '')
+            var str = String(raw)
+                .replace(/Original price was:[\s\S]*?Current price is:\s*/gi, ' ')
                 .replace(/Original price was:[\s\S]*/gi, '')
                 .trim();
-            if (!cleaned) {
-                var match = String(raw).match(/([₹$€£][\d,.]+(\.\d{2})?)/g);
-                if (match && match.length > 0) {
-                    cleaned = match[match.length - 1];
-                } else {
-                    cleaned = raw;
-                }
+            var matches = str.match(/([₹$€£][\d,.]+(\.\d{2})?)/g);
+            if (matches && matches.length >= 2) {
+                return '<span class="lmw-strike">' + matches[0] + '</span> <span class="lmw-current-price">' + matches[matches.length - 1] + '</span>';
             }
-            return cleaned;
+            if (matches && matches.length === 1) {
+                return '<span class="lmw-current-price">' + matches[0] + '</span>';
+            }
+            return str;
         },
 
         renderPage: function () {

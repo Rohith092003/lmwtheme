@@ -1977,6 +1977,19 @@ ul.products li.product {
     margin-bottom: 1rem;
 }
 
+.lmw-wishlist-item__price .lmw-strike {
+    text-decoration: line-through;
+    color: var(--lmw-mid-grey);
+    font-weight: 400;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+}
+
+.lmw-wishlist-item__price .lmw-current-price {
+    font-weight: 700;
+    color: var(--lmw-primary);
+}
+
 .lmw-wishlist-item__btn {
     width: 100%;
     display: block;

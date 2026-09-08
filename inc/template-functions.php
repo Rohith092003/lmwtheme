@@ -16,8 +16,12 @@ function lmw_theme_site_logo() {
     if ( has_custom_logo() ) {
         the_custom_logo();
     } else {
+        $name = get_bloginfo( 'name' );
+        if ( empty( $name ) || false !== strpos( $name, 'hostingersite.com' ) ) {
+            $name = 'LMW FASHION';
+        }
         echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="lmw-site-title" rel="home">';
-        bloginfo( 'name' );
+        echo esc_html( $name );
         echo '</a>';
     }
 }

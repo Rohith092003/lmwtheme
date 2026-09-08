@@ -24,12 +24,22 @@
     gap: 2rem;
 }
 
-.lmw-header__logo a {
+.lmw-header__logo {
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.lmw-header__logo a,
+.lmw-site-title {
     font-family: var(--lmw-font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--lmw-primary);
     letter-spacing: 0.05em;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .lmw-header__logo img {
@@ -314,14 +324,50 @@
 }
 
 @media (max-width: 768px) {
+    .lmw-header__inner {
+        height: 64px;
+        gap: 0.5rem;
+        justify-content: space-between;
+    }
+
+    .lmw-header__logo {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: 170px;
+    }
+
+    .lmw-header__logo a,
+    .lmw-site-title {
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+    }
+
+    .lmw-header__actions {
+        order: 2;
+        gap: 0.25rem;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    .lmw-header__action {
+        padding: 0.375rem;
+    }
+
+    .lmw-header__nav {
+        order: 3;
+        flex: 0 0 auto;
+        justify-content: flex-end;
+    }
+
     .lmw-header__menu-toggle {
         display: flex;
+        padding: 0.375rem;
     }
 
     .lmw-header__nav .lmw-nav-menu {
         display: none;
         position: absolute;
-        top: 72px;
+        top: 64px;
         left: 0;
         right: 0;
         background-color: var(--lmw-white);
@@ -330,6 +376,7 @@
         border-bottom: 1px solid var(--lmw-light-grey);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         gap: 0;
+        z-index: 1001;
     }
 
     .lmw-header__nav .lmw-nav-menu.is-open {
